@@ -1,0 +1,19 @@
+{
+    "users": [
+      {
+        "noEmail": "",
+        "notPwd": ""
+      },
+
+      {
+        "notRegisteredEmail": "user1@example.com",
+        "notRegPwd": "aqwdwcs"
+      },
+
+      {
+        "registeredEmail": "aba.dhaba@gmail.com",
+        "regPwd": "Aaba@1234"
+      }
+    ]
+  }
+  

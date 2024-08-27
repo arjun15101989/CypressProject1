@@ -10,17 +10,19 @@ export class registerPage{
     email: '#email_address',
     passWord : '#password',
     confirmPassword : '#password-confirmation',
-    createAcCTA: '[title="Create an Account"]',
+    createAcCTA: 'body.customer-account-create.page-layout-1column:nth-child(2) div.page-wrapper:nth-child(5) main.page-main div.columns:nth-child(4) div.column.main form.form.create.account.form-create-account:nth-child(3) div.actions-toolbar:nth-child(4) div.primary > button.action.submit.primary',
     validateRegistration: '[data-bind="html: $parent.prepareMessageForHtml(message.text)"]',
     profileIcon: 'body.account.customer-account-index.page-layout-2columns-left:nth-child(2) div.page-wrapper:nth-child(5) header.page-header div.panel.wrapper div.panel.header ul.header.links li.customer-welcome span.customer-name > button.action.switch',
     signOut: 'body.account.customer-account-index.page-layout-2columns-left:nth-child(2) div.page-wrapper:nth-child(5) header.page-header div.panel.wrapper div.panel.header ul.header.links li.customer-welcome span.customer-name > button.action.switch.selectorgadget_selected',
-    registeredUser:  '.message-error > div',
     inValidfirstNameError: '#firstname-error',   
     inValidlastNameError: '#lastname-eror',
     inValidemailError: '#email_address-error',
     inValidpassWordError : '#password-error',
     inValidconfirmPasswordError : '#password-confirmation-error',
-    requiredFieldErrorMsg : ".action submit primary" 
+    requiredFieldErrorMsg : ".action submit primary",
+    successfulRegMsg : "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']",
+    registeredUserMsg : "div[data-bind='html: $parent.prepareMessageForHtml(message.text)'"
+
 
 }  
         
@@ -69,19 +71,12 @@ export class registerPage{
         
     }
 
-    clickOncreateAcCTA(){
+    clickOncreateAcCTA()
+    {
 
         cy.get(this.weblocators.createAcCTA).click()
         
     }
-
-
-    verifyRegistrationMsg()
-    {
-      cy.get(this.weblocators.validateRegistration).contains('Thank you for registering with Main Website Store.')
-
-    }
-
 
     clickOnProfileIcon()
     {
@@ -102,7 +97,7 @@ export class registerPage{
 
     validateRegisteredUser()
     {
-      cy.get(this.weblocators.registeredUser).contains('There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
+      cy.get(this.weblocators.registeredUserMsg).contains('There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
     }
 
     validateFieldInvalidErrorMsg()
@@ -113,25 +108,25 @@ export class registerPage{
     
     validateInvalidLastName()
     {
-      cy.get(this.weblocators.requiredFieldErrorMsg).contains('This is a required field.')
+      cy.get(this.weblocators.inValidlastNameError).contains('This is a required field.')
     }
 
     
     validateInvalidEmail()
     {
-      cy.get(this.weblocators.requiredFieldErrorMsg).contains('This is a required field.')
+      cy.get(this.weblocators.inValidemailError).contains('This is a required field.')
     }
 
     
     validateInvalidPwd()
     {
-      cy.get(this.weblocators.requiredFieldErrorMsg).contains('This is a required field.')
+      cy.get(this.weblocators.inValidpassWordError).contains('This is a required field.')
     }
 
     
     validateInvalidConfirmedPwd()
     {
-      cy.get(this.weblocators.requiredFieldErrorMsg).contains('This is a required field.')
+      cy.get(this.weblocators.inValidconfirmPasswordError).contains('This is a required field.')
     }
 
     
@@ -139,6 +134,12 @@ export class registerPage{
     {
       cy.get(this.weblocators.requiredFieldErrorMsg).contains('* Required Fields')
     }
+
+    validateSuccessfulRegistration()
+    {
+      cy.get(this.weblocators.successfulRegMsg).contains('Thank you for registering with Main Website Store.')
+    }
+    
 
 
 

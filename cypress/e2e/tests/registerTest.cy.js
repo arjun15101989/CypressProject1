@@ -3,6 +3,8 @@ const registerObj = new registerPage()
 
 import registerTestData from "../../fixtures/registerTestData.json"
 
+
+
 describe('Registration Flow Test Suit', ()=>{
 
     it('Validate New Registration flow', ()=>{
@@ -14,14 +16,13 @@ describe('Registration Flow Test Suit', ()=>{
         registerObj.enaterpassWord(registerTestData.password)
         registerObj.enterconfirmPassword(registerTestData.confirmPassword)
         registerObj.clickOncreateAcCTA()
-        registerObj.verifyRegistrationMsg(registerTestData.validedRegistrationMsg)
+        registerObj.validateSuccessfulRegistration()
         registerObj.clickOnProfileIcon()
         registerObj.clickOnsignOut()
          
     })
 
-
-    
+ 
     it('Validate Already Registerd User', ()=>{
         registerObj.openURL()
         registerObj.clickregisterCTA()
@@ -29,11 +30,12 @@ describe('Registration Flow Test Suit', ()=>{
         registerObj.enterlastName(registerTestData.lastName)
         registerObj.enterEmail(registerTestData.email)
         registerObj.enaterpassWord(registerTestData.password)
-        registerObj.enterconfirmPassword(registerTestData.confirmPassword)
+        registerObj.enterconfirmPassword(registerTestData.password)
         registerObj.clickOncreateAcCTA()
-        registerObj.validateRegisteredUser(registerTestData.alredyregisteredUserErrorMsg)  
+        registerObj.validateRegisteredUser()  
     
     })
+
 
     it('Validate First Name field level error messages for Registration flow', ()=>{
         registerObj.openURL()
@@ -43,11 +45,13 @@ describe('Registration Flow Test Suit', ()=>{
          
     })
 
+
     it('Validate Last Name field level error messages for Registration flow', ()=>{
         registerObj.openURL()
         registerObj.clickregisterCTA()
         registerObj.clickOncreateAcCTA()
     })
+
 
     it('Validate Email field level error messages for Registration flow', ()=>{
         registerObj.openURL()
@@ -55,11 +59,13 @@ describe('Registration Flow Test Suit', ()=>{
         registerObj.clickOncreateAcCTA()
     })
 
+
     it('Validate Password field level error messages for Registration flow', ()=>{
         registerObj.openURL()
         registerObj.clickregisterCTA()
         registerObj.clickOncreateAcCTA()
     })
+
 
     it('Validate Confirm Password field level error messages for Registration flow', ()=>{
         registerObj.openURL()

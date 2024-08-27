@@ -1,11 +1,9 @@
 {
-    "firstName": "Arjotq",
-    "lastName": "SaptlT0estq",
-    "email": "arjun.spopopestl@gmail.com",
+    "firstName": "TestD",
+    "lastName": "QAD",
+    "email": "testa.qaD@gmail.com",
     "password": "secure@123",
     "confirmPassword": "secure@123",
-    "validedRegistrationMsg":"Thank you for registering with Main Website Store.",
-    "alredyregisteredUserErrorMsg" : "There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.",
     "inValidFirstName": "",
     "inValidLastName": "",
     "inValidEmail": "",
@@ -16,8 +14,6 @@
     "invValidEmailErrorMsg" :"",
     "inValidpasswordErrorMsg" : "",
     "inValidconfirmPasswordErrorMsg" : ""
-
-
   
   }
   
