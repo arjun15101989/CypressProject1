@@ -5,10 +5,13 @@ weblocators={
 
     signIn : "(div[class='panel header'] li[data-label='or'] a)",
     emailID : '#email',
+    pwdXpath: "//fieldset[@class='fieldset login']//input[@id='pass']",
     CTAsignIN : '#send2 span , .email span',
+    productCategoryList : '#ui-id-2',
     mensProduct : "a[id='ui-id-5'] span[class='ui-menu-icon ui-icon ui-icon-carat-1-e']",
     searchBox : "#search",
     searchTshirtMan : "#qs-option-2",
+    sortByOptionPDP : "div[class='column main'] div:nth-child(1) div:nth-child(3) label:nth-child(1)",
     searchProductHeader : ".base",
     productNameXpath : "//a[normalize-space()='Atomic Endurance Running Tee (Crew-Neck)']",
     productHeaderNameXpath : "//span[@class='base']",
@@ -64,6 +67,10 @@ weblocators={
 
 }
 
+openURL()
+    {
+        cy.visit(Cypress.env('URL'))
+    }
 
 
 

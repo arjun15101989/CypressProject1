@@ -14,7 +14,16 @@
 //
 //
 // -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+Cypress.Commands.add('login', (registeredEmail, regPwd) => { 
+
+    cy.visit('')
+    cy.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]").click()
+    cy.get("email").type(registeredEmail)
+    cy.xpath("//fieldset[@class='fieldset login']//input[@id='pass']").type(regPwd)
+    cy.get('#send2 span , .email span').click()
+
+
+     })
 //
 //
 // -- This is a dual command --
