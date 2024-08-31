@@ -14,12 +14,12 @@ weblocators={
     sortByOptionPDP : "div[class='column main'] div:nth-child(1) div:nth-child(3) label:nth-child(1)",
     searchProductHeader : ".base",
     productNameXpath : "//a[normalize-space()='Atomic Endurance Running Tee (Crew-Neck)']",
-    productHeaderNameXpath : "//span[@class='base']",
-    sizeOfProduct : "#option-label-size-143-item-170",
+    productHeaderNameXpath : "//span[@class='base']", 
+    SelectsizeOfProduct : "#option-label-size-143-item-170",
     productPrice : "span[id='product-price-510'] span[class='price']",
     productColor : "#option-label-color-93-item-50", 
     productQuantity : "#qty",
-    addToCartCTA : "button[id='product-addtocart-button'] span",
+    addToCartCTAOnPDP : "button[id='product-addtocart-button'] span",
     addToCartMsg : "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']",
     verifyStarRating : "body > div:nth-child(5) > main:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > span:nth-child(1)",
     reviewSection : "div[class='reviews-actions'] span:nth-child(2)",
@@ -27,6 +27,7 @@ weblocators={
     reviewerName : "#nickname_field",
     summaryReview : "#summary_field",
     giveReview : "#review_field",
+    removeProductFromCart : "a[title='Remove item']",
     submitReviewCTA : "button[class='action submit primary']",
     footerMsg : "small[class='copyright'] span",
     addToWishList : "a[class='action towishlist'] span",
@@ -67,10 +68,138 @@ weblocators={
 
 }
 
-openURL()
+validateSearchBox()
     {
-        cy.visit(Cypress.env('URL'))
+        cy.get(this.weblocators.searchBox).contains('Search entire store here...')
     }
+
+validateProductCategoryList()
+    {
+        cy.get(this.weblocators.productCategoryList).contains("What's New","Women","Men","Gear","Training","Sale")
+    }
+
+validateSearchBoxOnHomePage()
+    {
+        cy.get(this.weblocators.searchBox).should('have.css','element.style')
+    }
+
+validateSearchBoxwithProductName()
+{
+    cy.get(this.weblocators.searchBox).type('Tshirt')
+}
+
+verifyCartIcon()
+    {
+        cy.get(this.weblocators.verifyCartIcon).should('have.css', '.minicart-wrapper')
+    }
+
+validateSortByOption()
+    {
+        cy.get(this.weblocators.sortByOptionPDP).contains('Sort By')
+    }
+
+validatePDPSearchHeading()
+    {
+        cy.xpath(this.weblocators.productHeaderNameXpath).contains('Search results for')
+    }
+
+validateProductName()
+{
+    cy.xpath(this.weblocators.productNameXpath).contains("Atomic Endurance Running Tee (Crew-Neck)")
+}
+
+validateProductSize()
+{
+cy.get(this.weblocators.sizeOfProduct).contains('XS','S','M','L','XL')
+}
+
+validateProductStars()
+{
+    cy.get(this.weblocators.verifyStarRating).should('have.css' ,'.rating-summary')
+
+}
+
+validateProductPrice()
+{
+    cy.get(this.weblocators.productPrice).should('have.css' ,'.product-item .price-box .price')
+
+}
+
+validateColorOfProduct()
+{
+    cy.get(this.weblocators.productColor).should('have.css','.swatch-attribute-options')
+}
+
+validateAddToCartCTA() 
+{
+    cy.get(this.weblocators.addToCartCTA).contains('Add to Cart')
+}
+
+validateProductToCart() 
+{
+    cy.get(this.weblocators.addToCartCTA).click()
+    cy.get(this.weblocators.addToCartCTAOnPDP).click()
+}
+
+selectTshirt()
+{
+    cy.get(this.weblocators.searchTshirtMan).click()
+}
+
+validateProductQtyInCart()
+{
+    const productQuantity = 1
+    cy.get(this.weblocators.cartQuantity).to.eq('productQuantity')
+}
+
+addProductSize()
+{
+    cy.get(this.weblocators.SelectsizeOfProduct).click()
+}
+
+addProductColor()
+{
+    cy.get(this.weblocators.productColor).click()
+}
+
+modifyProductQty()
+{
+    cy.get(this.weblocators.productQuantity).type(5).clear()
+}
+
+addProductQty()
+{
+    cy.get(this.weblocators.productQuantity).contains(1)
+}
+
+validateaddToCartMsg()
+{
+    cy.get(this.weblocators.addToCartMsg),contains('You added Atomic Endurance Running Tee (Crew-Neck) to your shopping cart.')
+}
+
+validateRemoveProduct()
+{
+    cy.get(this.weblocators.removeProductFromCart).click()
+}
+
+validateProductQtyOnPDP()
+{
+    cy.get(this.weblocators.productTotalPrice).eq.to(this.weblocators.removeProductFromCart)
+}
+
+validateProceedToCheckOutCTAOnPDP()
+{
+    cy.get(this.weblocators.proceedToCheckoutCTA).contains('Proceed to Checkout')
+}
+
+clickOnProceedToCheckOutCTAOnPDP()
+{
+    cy.get(this.weblocators.proceedToCheckoutCTA).click()
+    
+}
+
+
+
 
 
 
