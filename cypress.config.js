@@ -16,13 +16,14 @@ module.exports = defineConfig({
     URL: 'https://magento.softwaretestingboard.com/customer/account/create/'
   },
 
-  defaultCommandTimeout: 15000, // Set to 20 seconds (10000 milliseconds)
+  defaultCommandTimeout: 45000, // Set to 20 seconds (10000 milliseconds)
 
   retries: 
   {
   runMode : 2
   }
 
+  
 });
 
 

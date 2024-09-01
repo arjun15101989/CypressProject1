@@ -17,11 +17,11 @@
 Cypress.Commands.add('login', (registeredEmail, regPwd) => { 
 
     cy.visit('')
-    cy.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]").click()
+    cy.get("div[class='panel header'] li[data-label='or'] a").click()
     cy.get("email").type(registeredEmail)
-    cy.xpath("//fieldset[@class='fieldset login']//input[@id='pass']").type(regPwd)
+    cy.get("#pass").type(regPwd)
     cy.get('#send2 span , .email span').click()
-
+    cy.get('body.account.customer-account-index.page-layout-2columns-left:nth-child(2) div.page-wrapper:nth-child(5) header.page-header div.panel.wrapper div.panel.header ul.header.links li.customer-welcome span.customer-name > button.action.switch.selectorgadget_selected').click()
 
      })
 //

@@ -1,11 +1,11 @@
-class addProductPage{
+export class addProductPage{
     
 weblocators={
 
 
     signIn : "(div[class='panel header'] li[data-label='or'] a)",
     emailID : '#email',
-    pwdXpath: "//fieldset[@class='fieldset login']//input[@id='pass']",
+    pwd: "body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > form:nth-child(1) > fieldset:nth-child(2) > div:nth-child(3) > div:nth-child(2) > input:nth-child(1)",
     CTAsignIN : '#send2 span , .email span',
     productCategoryList : '#ui-id-2',
     mensProduct : "a[id='ui-id-5'] span[class='ui-menu-icon ui-icon ui-icon-carat-1-e']",
@@ -13,8 +13,8 @@ weblocators={
     searchTshirtMan : "#qs-option-2",
     sortByOptionPDP : "div[class='column main'] div:nth-child(1) div:nth-child(3) label:nth-child(1)",
     searchProductHeader : ".base",
-    productNameXpath : "//a[normalize-space()='Atomic Endurance Running Tee (Crew-Neck)']",
-    productHeaderNameXpath : "//span[@class='base']", 
+    productName : "body > div:nth-child(5) > main:nth-child(4) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > div:nth-child(3) > ol:nth-child(1) > li:nth-child(2) > div:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)",
+    productHeaderName: ".base", 
     SelectsizeOfProduct : "#option-label-size-143-item-170",
     productPrice : "span[id='product-price-510'] span[class='price']",
     productColor : "#option-label-color-93-item-50", 
@@ -36,7 +36,7 @@ weblocators={
     productTotalPrice : "span[data-bind='html: cart().subtotal_excl_tax'] span[class='price']",
     itemInCartOnCard : ".count",
     totalQuantityOnCard: "#cart-item-281667-qty",
-    sizeOnCardXpath : "dd:nth-child(2) span:nth-child(1)",
+    sizeOnCard : "div[class='swatch-opt-510'] div[aria-label='Size']",
     eachPriceOnCard : "span[class='minicart-price'] span[class='price']",
     proceedToCheckoutCTA : "#top-cart-btn-checkout",
     shippingPageFname : "#O42IFJG",
@@ -51,20 +51,25 @@ weblocators={
     shippingPagePhoneNo : "#OO4TODU",
     shippingMethodTitle : "div[class='checkout-shipping-method'] div[class='step-title']",
     shippingMethodFirdstCheckBox : "input[value='tablerate_bestway']",
+    nextCTAOnShippingPage : ".primary",
+    shippingPagePostalCode : "#TO6OOHP",
+    shipingAddCheckBox : "#billing-address-same-as-shipping-checkmo",
     orderSummuryTitle : "span[class='title']" ,
     orderSummuryProductName : ".product-item-name",
     orderSummuryProductQuantity: ".value",
     orderSummuryProductPriceTotal : "span[class='cart-price'] span[class='price']",
-    orderSummuryProductSizeXpath : "//dd[normalize-space()='XL']",
     orderSummuryProductColor : "dd:nth-child(2)",
     shippingPageAddCTA : ".button.action.continue.primary",
-    placeOrderCTAXpath : "//span[normalize-space()='Place Order']",
-    thankyouPurchaseMsgXpath : "//span[@class='base']",
+    placeOrderCTA : "body.checkout-index-index.page-layout-checkout:nth-child(2) div.page-wrapper:nth-child(6) main.page-main div.columns:nth-child(3) div.column.main div.checkout-container:nth-child(3) div.opc-wrapper:nth-child(5) ol.opc li.checkout-payment-method div.step-content form.form.payments fieldset.fieldset:nth-child(2) div.opc-payment:nth-child(5) div.items.payment-methods div.payment-group div.payment-method._active div.payment-method-content div.actions-toolbar div.primary button.action.primary.checkout > span:nth-child(1)",
+    thankyouPurchaseMsg : "body.checkout-onepage-success.page-layout-1column:nth-child(2) div.page-wrapper:nth-child(5) main.page-main div.page-title-wrapper:nth-child(2) h1.page-title > span.base",
     yourOrderNoIs : "div[class='page-wrapper'] p:nth-child(1)",
     continueShoppingCTA : "a[class='action primary continue'] span",
     validatehomePageLogo : "img[src='https://magento.softwaretestingboard.com/pub/static/version1695896754/frontend/Magento/luma/en_US/images/logo.svg']",
     myAccDropdown : "div[class='panel header'] button[type='button']",
-    signoutDropDownMenuXpath : "//div[@aria-hidden='false']//a[normalize-space()='Sign Out']"
+    signoutDropDownMenu : "div[aria-hidden='false'] li[data-label='or'] a",
+    addNewAdd : '.action.action-show-popup',
+    shipHereCTA : "button[class='action primary action-save-address'] span"
+
 
 }
 
@@ -100,12 +105,12 @@ validateSortByOption()
 
 validatePDPSearchHeading()
     {
-        cy.xpath(this.weblocators.productHeaderNameXpath).contains('Search results for')
+        cy.get(this.weblocators.productHeaderName).contains('Search results for')
     }
 
 validateProductName()
 {
-    cy.xpath(this.weblocators.productNameXpath).contains("Atomic Endurance Running Tee (Crew-Neck)")
+    cy.get(this.weblocators.productName).contains("Atomic Endurance Running Tee (Crew-Neck)")
 }
 
 validateProductSize()
@@ -195,14 +200,117 @@ validateProceedToCheckOutCTAOnPDP()
 clickOnProceedToCheckOutCTAOnPDP()
 {
     cy.get(this.weblocators.proceedToCheckoutCTA).click()
+
+}
+
+clickOnFirstNameOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageFname).contains('aaba')
     
 }
 
+clickOnLastNameOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageLname).contains('dhaba')
+    
+}
+
+clickOnCompanyNameOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageCompanyName).tyep('ABC Corp')
+    
+}
+clickOnAdd1OnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageAdd1).tyep('link Rd')
+    
+}
+
+clickOnAdd2OnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageAdd2).type('Goregaon')
+    
+}
+
+clickOnAdd3OnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageAdd3).type('Mumbai')
+    
+}
+
+clickOnCityOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageCityName).type('Mumbai')
+    
+}
+
+clickOnStateOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageStateName).click().text('New York')
+    
+}
+
+clickOnPostalCodeOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPagePostalCode).type('400104')
+    
+}
+
+clickOnCountryOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPageCountryName).type('United States')
+    
+}
+
+clickOnPhoneNumberOnShippingPage()
+{
+    cy.get(this.weblocators.shippingPagePhoneNo).type('7208732205')
+    
+}
+
+selectShippingMethod()
+{
+    cy.get(this.weblocators.shippingMethodFirdstCheckBox).click()
+
+}
+
+ clickOnNextCTA()
+{
+    cy.get(this.weblocators.nextCTAOnShippingPage).click()
+
+}
+
+clickOnPlaceOrderCTA()
+{
+    cy.get(this.weblocators.placeOrderCTA).click()
+
+}
+
+thankyouPurchaseMsg()
+{
+    cy.get(this.weblocators.thankyouPurchaseMsg).contains('Thank you for your purchase!')
+}
+
+clickOnCheckBox()
+{
+    cy.get(this.weblocators.shipingAddCheckBox).click()
+}
 
 
+addNewAddOnShippingPage()
+{
+    cy.get(this.weblocators.addNewAdd).click()
+}
 
+clickOnShipHereCTA()
+{
+    cy,get(this.weblocators.shipHereCTA).click()
+}
 
-
+validateOrderNo()
+{
+    cy.get(this.weblocators.yourOrderNoIs).contains('Your order number is:')
+}
 
 }
 

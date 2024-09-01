@@ -20,7 +20,7 @@ export class registerPage{
     inValidpassWordError : '#password-error',
     inValidconfirmPasswordError : '#password-confirmation-error',
     requiredFieldErrorMsg : ".action submit primary",
-    successfulRegMsg : "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']",
+    successfulRegMsg : "body.account.customer-account-index.page-layout-2columns-left:nth-child(2) div.page-wrapper:nth-child(5) main.page-main div.page.messages:nth-child(2) div:nth-child(2) div.messages div.message-success.success.message > div:nth-child(1)",
     registeredUserMsg : "div[data-bind='html: $parent.prepareMessageForHtml(message.text)'"
 
 

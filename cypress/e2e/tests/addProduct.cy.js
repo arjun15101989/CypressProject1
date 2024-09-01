@@ -1,12 +1,16 @@
-import loginTestData from '../fixtures/loginTestData.json'
-import addProjectPage from '../tests/addProductPage.js'
-const addProductObj = new addProjectPage ()
+
+import loginTestData from "../../fixtures/loginTestData.json"
+
+import { addProjectPage } from "../../pages/addProductPage.js"
+const addProductObj = new addProjectPage()
 
 
 describe('Product Details Page Testing', () => {
-    before(() => {
+    beforeEach(() => {
 
     cy.login(loginTestData.users.registeredEmail, loginTestData.users.regPwd)
+
+
 
     })
 
@@ -146,25 +150,45 @@ describe('Product Details Page Testing', () => {
 
     it ('Validate that user can add shipping and billing information.', () =>{
 
-        addProductObj.
+        addProductObj.addNewAddOnShippingPage()
+        addProductObj.clickOnFirstNameOnShippingPage()
+        addProductObj.clickOnLastNameOnShippingPage()
+        addProductObj.clickOnCompanyNameOnShippingPage()
+        addProductObj.clickOnAdd1OnShippingPage()
+        addProductObj.clickOnAdd2OnShippingPage()
+        addProductObj.clickOnAdd3OnShippingPage()
+        addProductObj.clickOnCityOnShippingPage()
+        addProductObj.clickOnStateOnShippingPage()
+        addProductObj.clickOnPostalCodeOnShippingPage()
+        addProductObj.clickOnCountryOnShippingPage()
+        addProductObj.clickOnPhoneNumberOnShippingPage()
+        addProductObj.clickOnNextCTA()
+        addProductObj.clickOnPlaceOrderCTA()
+        addProductObj.thankyouPurchaseMsg()
+
+
     })
 
     
     it ('Validate that the order confirmed message', () =>{
 
+        addProductObj.addProductQty()
+        addProductObj.validateaddToCartMsg()
+        addProductObj.thankyouPurchaseMsg()
 
     })
 
 
     
-    it ('Ensure that the user can select a shipping method', () =>{
-
-
-    })
 
 
     it ('Validate  the  order confirmation number', () =>{
 
+        
+        addProductObj.addProductQty()
+        addProductObj.validateaddToCartMsg()
+        addProductObj.thankyouPurchaseMsg()
+        addProductObj.validateOrderNo()
 
     })
     

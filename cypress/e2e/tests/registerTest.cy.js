@@ -1,7 +1,8 @@
+
+import registerTestData from "../../fixtures/registerTestData.json"
 import { registerPage } from "../../pages/registerPage.js"
 const registerObj = new registerPage()
 
-import registerTestData from "../../fixtures/registerTestData.json"
 
 
 
